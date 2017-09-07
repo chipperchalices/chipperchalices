@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const CardController = require('../controllers').Cards;
 
-router.route('/card')
+router.route('/')
 
   //handle get request from client to retrieve all job cards from db
   .get(CardController.getAll)
@@ -11,7 +11,7 @@ router.route('/card')
   .post(CardController.create)
   ;
 
-router.route('/card/update')
+router.route('/update')
 
   //handle post request from client to update status on a job card
   .post(CardController.update)
@@ -19,3 +19,4 @@ router.route('/card/update')
 
 
 module.exports = router;
+
