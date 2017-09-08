@@ -14,7 +14,7 @@ models.Company.findOrCreate = function(req, res) {
     name: req.body.job.company,
     industry: null,
     logo_url: null,
-    linkedin_url: null,
+    company_url: null,
     description: null,
     location_id: null
   });
@@ -53,7 +53,7 @@ models.Company.getGlassdoorInfo = function (company) {
       return company.save ({          
         industry: data.industryName,
         logo_url: data.squareLogo,
-        linkedin_url: data.website,
+        company_url: data.website,
         description: data.featuredReview.headline
       });
     })
