@@ -88,7 +88,7 @@ passport.use('local-login', new LocalStrategy({
       // check password and pass through account
       return Promise.all([profile, profile.related('auths').at(0).comparePassword(password)]);
     })
-    .then(([profile, match]) => {
+    .then((profile, match) => {
       if (!match) {
         throw profile;
       }
