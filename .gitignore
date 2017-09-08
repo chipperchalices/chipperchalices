@@ -4,6 +4,7 @@ config/production.json
 config/staging.json
 config/test.json
 config/default.json
+config/glassdoor.js
 
 # OS X
 .DS_Store
