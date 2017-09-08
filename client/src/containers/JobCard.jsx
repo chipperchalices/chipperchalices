@@ -18,6 +18,7 @@ class JobCard extends Component {
 
   render() {
     const job = this.props.job;
+    console.log('job/companyName from within JOBCARD:', job.company.name);
 
     return (
       <Card className='job-card' expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import JobsReducer from './reducer_jobcards.js';
+import { cards, cardsHasErrored, cardsAreFetched } from './reducer_jobcards.js';
 import InterestJobsReducer from './reducer_interestjobs.js';
 import AppliedJobsReducer from './reducer_appliedjobs.js';
 import InterviewJobsReducer from './reducer_interviewjobs.js';
@@ -9,7 +9,10 @@ import PostInterviewJobsReducer from './reducer_postinterviewjobs.js';
 
 const rootReducer = combineReducers({
   //state: (state = {}) => state
-  dummyJobs: JobsReducer,
+  cards,
+  cardsHasErrored,
+  cardsAreFetched,
+
   interestJobs: InterestJobsReducer,
   appliedJobs: AppliedJobsReducer,
   interviewJobs: InterviewJobsReducer,

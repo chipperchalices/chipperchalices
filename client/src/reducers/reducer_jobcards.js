@@ -1,52 +1,30 @@
-export default function() {
+//Note: each reducer is named after the resulting store's state property, with the action.type not necessarily needing to correspond. Each reducer will return a discrete property of the state, regardless of how many conditions are inside that reducer.
 
-  // will retrieve from server
-  // use dummy data for cards for now
-  return [
-    {
-      id: 1,
-      company: {
-        id: 12,
-        name: 'Vlocity',
-        description: 'Vlocity is a leading industry cloud software company that delivers award winning industry-specific applications on the Salesforce platform.',
-        // industry: 'Information Technology and Services Computer Software Internet',
-        logoUrl: 'https://tinyurl.com/ya54jrkq',
-        location: 'San Francisco, CA'
-      },
-      position: 'UI Developer',
-      // applicationUrl: 'https://www.linkedin.com/jobs/view/383180342/'
-      applicationUrl: 'https://boards.greenhouse.io/vlocity/jobs/781103',
-      currentStatus: 1,
-      date: '2017-09-02',
-      notes: null
-    },
-    {
-      company: {
-        id: 3,
-        name: 'Robert Half Technology',
-        description: 'Robert Half Technology is a leading provider of technology professionals on a project and full-time basis.',
-        logoUrl: 'https://tinyurl.com/y8z3pajs',
-        location: 'San Francisco, CA'
-      },
-      position: 'Front End Developer',
-      applicationUrl: 'https://www.linkedin.com/jobs/view/430047268/',
-      currentStatus: 2,
-      date: '2017-08-22',
-      notes: 'Recruiter reached out to me.'
-    },
-    {
-      company: {
-        id: 2,
-        name: 'Netskope',
-        description: 'Netskope is the leader in cloud security. ',
-        logoUrl: 'https://tinyurl.com/y88e4djd',
-        location: 'Los Altos, CA'
-      },
-      position: 'Front End UI Developer',
-      applicationUrl: 'https://www.linkedin.com/jobs/view/380992731/',
-      currentStatus: 2,
-      date: '2017-09-01',
-      notes: null
-    }
-  ];
-}
+export const cards = (state = [], action) => {
+  switch (action.type) {
+  case 'ITEMS_FETCH_DATA_SUCCESS':
+    return action.cards;
+  default:
+    return state;
+  }
+};
+
+export const cardsHasErrored = (state = false, action) => {
+  switch (action.type) {
+  case 'CARDS_HAS_ERRORED':
+    return action.hasErrored;
+
+  default:
+    return state;
+  }
+};
+
+export const cardsAreFetched = (state = false, action) => {
+  switch (action.type) {
+  case 'CARDS_ARE_FETCHED':
+    return action.fetched;
+
+  default:
+    return state;
+  }
+};

@@ -3,10 +3,21 @@ import { connect } from 'react-redux';
 import { Card, CardHeader, CardTitle, CardText } from 'material-ui/Card';
 
 import JobCard from './JobCard.jsx';
+import { fetchCards } from '../actions/index.js';
 
 class InterestList extends Component {
 
+  componentDidMount() {
+    this.props.fetchCards('Interested');
+  }
+
   render() {
+    if (this.props.hasErrored) {
+      return <p>Oops! Error loading job cards</p>;
+    }
+
+    console.log('jobs from REDUX', this.props.interestJobs);
+
     return (
       <div>
         {this.props.interestJobs.map((job, i) => (
@@ -23,8 +34,16 @@ class InterestList extends Component {
 const mapStateToProps = (state) => {
   // whatever is returned will show up as props inside of InterestList
   return {
-    interestJobs: state.interestJobs
+    interestJobs: state.cards,
+    hasErrored: state.cardsHasErrored,
+    fetched: state.cardsAreFetched
   };
 };
 
-export default connect(mapStateToProps)(InterestList);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCards: (status) => dispatch(fetchCards(status))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InterestList);
