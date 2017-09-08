@@ -3,8 +3,8 @@ const card = require ('./cards.js');
 const lifecycle = require ('./lifecycle.js');
 const config = require ('../../config/glassdoor.js');
 const Glassdoor = require('node-glassdoor').initGlassdoor({
-  partnerId: config.config.partnerId,
-  partnerKey: config.config.key
+  partnerId: config.partnerId,
+  partnerKey: config.key
 });
 
 
