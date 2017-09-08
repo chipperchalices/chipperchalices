@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// First 3 functions are Actions that each return an action object with two properties:
-// 1. type property: always uppercase
+// These functions are Action Creators that each return an Action object with two properties:
+// 1. type property: always uppercase string
 // 2. payload property (describes the conditions of the action being triggered)
 
 // Note: the value you use for type and the name of the other property that is returned is important, because you will re-use them in your reducers
@@ -31,7 +31,7 @@ export const cardsHasErrored = (bool) => {
 };
 
 
-// ACTION CREATOR: only one we need to import because it handles dispatching the other actions
+// This action creator is the only one we need to import because it handles dispatching the other action creators
 
 export const fetchCards = (status) => {
   console.log('status from ACTION CREATOR', status);

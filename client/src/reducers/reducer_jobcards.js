@@ -2,7 +2,7 @@
 
 export const cards = (state = [], action) => {
   switch (action.type) {
-  case 'ITEMS_FETCH_DATA_SUCCESS':
+  case 'FETCH_CARDS_SUCCESS':
     return action.cards;
   default:
     return state;

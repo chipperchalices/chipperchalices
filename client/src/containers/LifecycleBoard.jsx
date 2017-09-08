@@ -57,23 +57,3 @@ class LifecycleBoard extends Component {
 }
 
 export default LifecycleBoard;
-
-
-// class LifecycleBoard extends Component {
-//   render() {
-//     return (
-//       <table className="table table-hover">
-//         <thead>
-//           <tr>
-//             <th>Interest</th>
-//             <th>Applied</th>
-//             <th>Interview</th>
-//             <th>Post-Interview</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//         </tbody>
-//       </table>
-//     )
-//   }
-// }
