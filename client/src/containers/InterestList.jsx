@@ -7,6 +7,10 @@ import JobCard from './JobCard.jsx';
 class InterestList extends Component {
 
   render() {
+    if (this.props.hasErrored) {
+      return <p>Oops! Error loading job cards</p>;
+    }
+
     return (
       <div>
         {this.props.interestJobs.map((job, i) => (
@@ -23,7 +27,8 @@ class InterestList extends Component {
 const mapStateToProps = (state) => {
   // whatever is returned will show up as props inside of InterestList
   return {
-    interestJobs: state.interestJobs
+    interestJobs: state.cards.interested,
+    hasErrored: state.cardsHasErrored
   };
 };
 

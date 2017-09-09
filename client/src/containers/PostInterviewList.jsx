@@ -17,9 +17,8 @@ class PostInterviewList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // whatever is returned will show up as props inside of InterestList
   return {
-    postInterviewJobs: state.postInterviewJobs
+    postInterviewJobs: state.cards.interviewed
   };
 };
 

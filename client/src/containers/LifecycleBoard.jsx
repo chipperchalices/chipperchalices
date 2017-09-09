@@ -8,6 +8,7 @@ import InterestList from './InterestList.jsx';
 import AppliedList from './AppliedList.jsx';
 import InterviewList from './InterviewList.jsx';
 import PostInterviewList from './PostInterviewList.jsx';
+import { fetchCards } from '../actions/index.js';
 
 
 const style = {
@@ -17,8 +18,13 @@ const style = {
 
 class LifecycleBoard extends Component {
 
+  componentDidMount() {
+    this.props.fetchCards('Interested');
+  }
 
   render() {
+    console.log('Fetched cards from lifecycleBoard!', this.props.fetched);
+
     return (
       <div>
         <Grid>
@@ -56,24 +62,21 @@ class LifecycleBoard extends Component {
   }
 }
 
-export default LifecycleBoard;
+/* REDUX: everytime the application state changes, the container will re-render and update the props */
 
+const mapStateToProps = (state) => {
+  // whatever is returned will show up as props inside of InterestList
+  return {
+    hasErrored: state.cardsHasErrored,
+    fetched: state.cardsAreFetched
+  };
+};
 
-// class LifecycleBoard extends Component {
-//   render() {
-//     return (
-//       <table className="table table-hover">
-//         <thead>
-//           <tr>
-//             <th>Interest</th>
-//             <th>Applied</th>
-//             <th>Interview</th>
-//             <th>Post-Interview</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//         </tbody>
-//       </table>
-//     )
-//   }
-// }
+// dispatch connects to actions
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCards: (status) => dispatch(fetchCards(status))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LifecycleBoard);
