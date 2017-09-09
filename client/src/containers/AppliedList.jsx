@@ -18,9 +18,8 @@ class AppliedList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // whatever is returned will show up as props inside of AppliedList
   return {
-    appliedJobs: state.appliedJobs
+    appliedJobs: state.cards.applied
   };
 };
 

@@ -6,39 +6,40 @@ import axios from 'axios';
 
 // Note: the value you use for type and the name of the other property that is returned is important, because you will re-use them in your reducers
 
-// fetchCardsSuccess will be called when the data has been successfully fetched, with the data passed to it as jobCards.
 
+// fetchCardsSuccess will be called when the data has been successfully fetched.
 export const fetchCardsSuccess = (interested, applied, interviewScheduled, interviewed) => {
-  return function(dispatch) {
-    dispatch({
-      type: 'UPDATE_INTERESTED_LIST',
-      interested
-    });
-    dispatch({
-      type: 'UPDATE_APPLIED_LIST',
-      applied
-    });
-    dispatch({
-      type: 'UPDATE_INTERVIEW_SCHEDULED_LIST',
-      interviewScheduled
-    });
-    dispatch({
-      type: 'UPDATE_INTERVIEWED_LIST',
-      interviewed
-    });
+  return {
+
+    type: 'FETCH_CARDS_SUCCESS',
+    //We'll return an object with properties for each of our status lists (ES6 property value shorthand)
+    interested,
+    applied,
+    interviewScheduled,
+    interviewed
   };
 };
 
+// wordier method:
 
 // export const fetchCardsSuccess = (interested, applied, interviewScheduled, interviewed) => {
-//   return {
-
-//     type: 'FETCH_CARDS_SUCCESS',
-//     //We'll return an object with properties for each of our status lists (ES6 property value shorthand)
-//     interested,
-//     applied,
-//     interviewScheduled,
-//     interviewed
+//   return function(dispatch) {
+//     dispatch({
+//       type: 'UPDATE_INTERESTED_LIST',
+//       interested
+//     });
+//     dispatch({
+//       type: 'UPDATE_APPLIED_LIST',
+//       applied
+//     });
+//     dispatch({
+//       type: 'UPDATE_INTERVIEW_SCHEDULED_LIST',
+//       interviewScheduled
+//     });
+//     dispatch({
+//       type: 'UPDATE_INTERVIEWED_LIST',
+//       interviewed
+//     });
 //   };
 // };
 
@@ -75,6 +76,7 @@ export const fetchCards = (status) => {
         let interviewScheduled = [];
         let interviewed = [];
 
+        // TODO: refactor so the filtering happens in fetchCardsSuccess action creator
         response.data.forEach(jobCard => {
           let status = jobCard.currentStatus;
 
@@ -84,11 +86,7 @@ export const fetchCards = (status) => {
                 status === 'Interviewed' ? interviewed.push(jobCard) : jobCard;
         });
 
-        console.log('interestedArr from actions.index!! QUACK', interested);
-
-        console.log('interviewScheduledArr from actions.index! LNKD MEOW', interviewScheduled);
-
-        //dispatch(updateStatusLists(interested, applied, interviewScheduled, interviewed));
+        console.log('interestedArr from actions.index', interested);
 
         dispatch(fetchCardsSuccess(interested, applied, interviewScheduled, interviewed));
       })

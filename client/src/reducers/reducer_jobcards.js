@@ -18,17 +18,25 @@ export const cards = (
       interviewed: action.interviewed
     });
 
-  case 'UPDATE_INTERESTED_LIST':
-    return action.interested;
+  // case 'UPDATE_INTERESTED_LIST':
+  //   return Object.assign({}, state, {
+  //     interested: action.interested
+  //   });
 
-  case 'UPDATE_APPLIED_LIST':
-    return action.applied;
+  // case 'UPDATE_APPLIED_LIST':
+  //   return Object.assign({}, state, {
+  //     applied: action.applied
+  //   });
 
-  case 'UPDATE_INTERVIEW_SCHEDULED_LIST':
-    return action.interviewScheduled;
+  // case 'UPDATE_INTERVIEW_SCHEDULED_LIST':
+  //   return Object.assign({}, state, {
+  //     interviewScheduled: action.interviewScheduled
+  //   });
 
-  case 'UPDATE_INTERVIEWED_LIST':
-    return action.interviewed;
+  // case 'UPDATE_INTERVIEWED_LIST':
+  //   return Object.assign({}, state, {
+  //     interviewed: action.interviewed
+  //   });
 
   default:
     return state;
