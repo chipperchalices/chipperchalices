@@ -33,8 +33,10 @@ export const cardsHasErrored = (bool) => {
 
 // This action creator is the only one we need to import because it handles dispatching the other action creators
 
+// dispatch(action): this is the only way to trigger a state change. The return value will be considered the next state
+
 export const fetchCards = (status) => {
-  console.log('status from ACTION CREATOR', status);
+  console.log('sstatus from ACTION CREATOR', status);
   return (dispatch) => {
     dispatch(cardsAreFetched(true));
 
@@ -42,7 +44,25 @@ export const fetchCards = (status) => {
       .then(response => {
         console.log('Axios response.data', response.data);
 
-        dispatch(fetchCardsSuccess(response.data));
+        let interested = [];
+        let applied = [];
+        let interviewScheduled = [];
+        let interviewed = [];
+
+        response.data.forEach(jobCard => {
+          let status = jobCard.currentStatus;
+
+          status === 'Interested' ? interested.push(jobCard) :
+            status === 'Applied' ? applied.push(jobCard) :
+              status === 'Interview Scheduled' ? interviewScheduled.push(jobCard) :
+                status === 'Interviewed' ? interviewed.push(jobCard) : jobCard;
+        });
+
+        console.log('interestedArr from actions.index!! QUACK', interested);
+
+        console.log('interviewScheduledArr from actions.index! LNKD MEOW', interviewScheduled);
+
+        dispatch(fetchCardsSuccess(interested, applied, interviewScheduled, interviewed));
       })
       .catch(error => {
         console.log('uh-oh fetchCards error', error);

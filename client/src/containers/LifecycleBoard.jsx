@@ -8,6 +8,7 @@ import InterestList from './InterestList.jsx';
 import AppliedList from './AppliedList.jsx';
 import InterviewList from './InterviewList.jsx';
 import PostInterviewList from './PostInterviewList.jsx';
+//import { fetchCards } from '../actions/index.js';
 
 
 const style = {
@@ -17,6 +18,9 @@ const style = {
 
 class LifecycleBoard extends Component {
 
+  // componentDidMount() {
+  //   this.props.fetchCards();
+  // }
 
   render() {
     return (
@@ -57,3 +61,22 @@ class LifecycleBoard extends Component {
 }
 
 export default LifecycleBoard;
+
+/*REDUX: everytime the application state changes, the container/InterestList will re-render and update the props*/
+
+/*const mapStateToProps = (state) => {
+  // whatever is returned will show up as props inside of InterestList
+  return {
+    interestJobs: state.cards,
+    hasErrored: state.cardsHasErrored,
+    fetched: state.cardsAreFetched
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCards: (status) => dispatch(fetchCards(status))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(InterestList);*/
