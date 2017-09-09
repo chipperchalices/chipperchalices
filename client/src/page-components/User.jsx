@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-//import Grid from 'material-ui/Grid';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+
 import LifecycleBoard from '../containers/LifecycleBoard.jsx';
 import JobForm from '../components/jobForm.jsx';
 
-export default class User extends Component {
+class User extends Component {
 
   render() {
     return (
@@ -16,3 +18,5 @@ export default class User extends Component {
     );
   }
 }
+
+export default DragDropContext(HTML5Backend)(User);
