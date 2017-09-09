@@ -11,8 +11,6 @@ class InterestList extends Component {
       return <p>Oops! Error loading job cards</p>;
     }
 
-    console.log('jobs from REDUX', this.props.interestJobs);
-
     return (
       <div>
         {this.props.interestJobs.map((job, i) => (
