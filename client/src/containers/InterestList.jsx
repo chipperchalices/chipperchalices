@@ -7,7 +7,7 @@ import { fetchCards } from '../actions/index.js';
 
 class InterestList extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchCards('Interested');
   }
 
@@ -34,7 +34,7 @@ class InterestList extends Component {
 const mapStateToProps = (state) => {
   // whatever is returned will show up as props inside of InterestList
   return {
-    interestJobs: state.cards,
+    interestJobs: state.interested,
     hasErrored: state.cardsHasErrored,
     fetched: state.cardsAreFetched
   };

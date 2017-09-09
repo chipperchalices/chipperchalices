@@ -1,9 +1,35 @@
 //Note: each reducer is named after the resulting store's state property, with the action.type not necessarily needing to correspond. Each reducer will return a discrete property of the state, regardless of how many conditions are inside that reducer.
 
-export const cards = (state = [], action) => {
+export const cards = (
+  state = {
+    interested: [],
+    applied: [],
+    interviewScheduled: [],
+    interviewed: []
+  },
+  action) => {
   switch (action.type) {
+
   case 'FETCH_CARDS_SUCCESS':
-    return action.cards;
+    return Object.assign({}, state, {
+      interested: action.interested,
+      applied: action.applied,
+      interviewScheduled: action.interviewScheduled,
+      interviewed: action.interviewed
+    });
+
+  case 'UPDATE_INTERESTED_LIST':
+    return action.interested;
+
+  case 'UPDATE_APPLIED_LIST':
+    return action.applied;
+
+  case 'UPDATE_INTERVIEW_SCHEDULED_LIST':
+    return action.interviewScheduled;
+
+  case 'UPDATE_INTERVIEWED_LIST':
+    return action.interviewed;
+
   default:
     return state;
   }
