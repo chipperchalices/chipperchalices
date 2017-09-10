@@ -38,6 +38,9 @@ models.Company.findOrCreate = function(req, res) {
       }
       return result;
     })
+    .then(result => {
+      res.sendStatus(201);
+    })
     .catch(err => {
       res.status(500).send(err);
     });
@@ -69,4 +72,6 @@ models.Company.getGlassdoorInfo = function (req, res, company) {
 module.exports.create = (req, res) => {
   return models.Company.findOrCreate(req, res);
 };
+
+module.exports.getGlassdoorInfo = models.Company.getGlassdoorInfo;
 
