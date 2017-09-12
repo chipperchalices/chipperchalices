@@ -22,8 +22,13 @@ module.exports.create = (req, res, company) => {
   })
     .save()
     .then(result => {
+      var card = {
+        job: result,
+        company: company
+      };
       lifecycle.create(req, res, result);
       console.log('card saved');
+      res.status(201).send(card);
     })
     .catch(err => {
       console.log('card err', err);
