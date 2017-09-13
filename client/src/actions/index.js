@@ -78,7 +78,7 @@ export const fetchCards = (status) => {
 
         // TODO: refactor so the filtering happens in fetchCardsSuccess action creator
         response.data.forEach(jobCard => {
-          let status = jobCard.currentStatus;
+          let status = jobCard.current_status;
 
           status === 'Interested' ? interested.push(jobCard) :
             status === 'Applied' ? applied.push(jobCard) :
