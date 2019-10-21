@@ -36,7 +36,7 @@
     "grunt-pg": "git+https://github.com/watsoncj/grunt-pg.git",
     "heroku": "^0.2.0",
     "image-webpack-loader": "^3.4.2",
-    "knex": "^0.12.9",
+    "knex": "^0.19.5",
     "material-ui": "^0.19.1",
     "moment": "^2.18.1",
     "morgan": "^1.8.1",
