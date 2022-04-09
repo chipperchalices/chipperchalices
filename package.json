@@ -38,7 +38,7 @@
     "image-webpack-loader": "^3.4.2",
     "knex": "^0.12.9",
     "material-ui": "^0.19.1",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "morgan": "^1.8.1",
     "node-glassdoor": "^1.0.5",
     "nodemon": "^1.12.0",
